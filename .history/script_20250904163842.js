@@ -44,9 +44,9 @@ const loadLevelword = (id) => {
     fetch(url)
         .then(res => res.json())
         .then((data) => {
-            removeActive(); // remove all active class
+            removeActive(); // 
             const clickbtn = document.getElementById(`lession-btn-${id}`);
-            clickbtn.classList.add('active'); // add active class
+            clickbtn.classList.add('active');
             displaylevelword(data.data)
         })
 }
@@ -78,7 +78,7 @@ const displaylevelword = (words) => {
             <p class="text-[20px] font-medium my-[14px]">Meaning /Pronounciation</p>
             <h1 class="text-[32px] font-semibold font-bangla">"${word.meaning ? word.meaning : "empty"} / ${word.pronunciation}"</h1>
             <div class="flex justify-between">
-                <div onclick="my_modal_5.showModal()" class="bg-[#e7f3fe] p-[10px] rounded-md flex justify-center items-center"><i class="fa-solid fa-circle-info text-[25px]"></i></div>
+                <div class="bg-[#e7f3fe] p-[10px] rounded-md flex justify-center items-center"><i class="fa-solid fa-circle-info text-[25px]"></i></div>
                 <div class="bg-[#e7f3fe] p-[10px] rounded-md flex justify-center items-center"><i class="fa-solid fa-volume-low text-[25px]"></i></div>
             </div>
         </div>
