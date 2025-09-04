@@ -1,0 +1,12 @@
+const loadlesson = () => {
+   fetch("https://openapi.programming-hero.com/api/levels/all")
+   .then(res => res.json())
+   .then((json) => {
+      console.log(json);
+   })
+}
+loadlesson();
+
+const displaylessons = (lessons) => {
+    
+}
