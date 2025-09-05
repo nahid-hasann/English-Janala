@@ -73,7 +73,7 @@ const displaylevelword = (words) => {
     </div>
     
     `
-        managespiner(false);
+      managespiner(false);
         return;
     }
 
@@ -138,7 +138,7 @@ const displayWordDetails = (words) => {
     `;
     document.getElementById('my_modal_5').showModal();
 
-
+    
 
 }
 
@@ -147,34 +147,30 @@ const displayWordDetails = (words) => {
 // ** 
 
 const managespiner = (status) => {
-    if (status == true) {
+      if(status == true){
         document.getElementById('spinner').classList.remove("hidden");
         document.getElementById('word-container').classList.add('hidden');
-    }
-    else {
+      }
+      else{
         document.getElementById('word-container').classList.remove("hidden");
         document.getElementById('spinner').classList.add('hidden');
-    }
+      }
 }
 
 // ** 
 // ** 
 
 document.getElementById('btn-search').addEventListener('click', () => {
-    const input = document.getElementById('input-search');
-    const search = input.value.trim().toLowerCase();
-    console.log(search);
-    fetch("https://openapi.programming-hero.com/api/words/all")
-        .then(res => res.json())
-        .then((data) => {
-            const allWords = data.data;
-            console.log(allWords);
-            const filterWord = allWords.filter((word) => {
-                return word.word.toLowerCase().includes(search);
-            });
-
-            displaylevelword(filterWord);
-        })
+   const input = document.getElementById('input-search');
+   const search = input.value.trim().toLowerCase();
+   console.log(search);
+   fetch("https://openapi.programming-hero.com/api/words/all")
+   .then(res => res.json())
+   .then((data) => {
+       const allWords = data.data;
+       console.log(allWords);
+       const filterWord
+   })
 })
 
 

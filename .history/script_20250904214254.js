@@ -29,12 +29,7 @@ const displaylessons = (lessons) => {
     });
 }
 // ** 
-// ** 
 
-
-
-
-// ** 
 // ** 
 
 const removeActive = () => {
@@ -46,7 +41,6 @@ const removeActive = () => {
 }
 
 const loadLevelword = (id) => {
-    managespiner(true);
     const url = `https://openapi.programming-hero.com/api/level/${id}`
     fetch(url)
         .then(res => res.json())
@@ -73,7 +67,6 @@ const displaylevelword = (words) => {
     </div>
     
     `
-        managespiner(false);
         return;
     }
 
@@ -96,8 +89,6 @@ const displaylevelword = (words) => {
 
         wordContainer.appendChild(card);
     })
-
-    managespiner(false);
 }
 
 // ** 
@@ -117,66 +108,28 @@ const displayWordDetails = (words) => {
 
     console.log(words)
     const detailsBox = document.getElementById('details-containar');
-    detailsBox.innerHTML = `
-    
-    
-             <div>
-                     <h3 class="text-lg font-bold">${words.word}</h3>
-                <p class="mt-[7px]">meaning</p>
-                <p class="mb-[7px]">${words.pronunciation}</p>
-                <p class="mt-[7px]">Example</p>
-                <p class="mb-[7px]">${words.sentence}</p>
-                <p>সমার্থক শব্দ গুলো</p>
-                <div class="grid grid-cols-3 gap-[15px] justify-center items-center">
-                    <div class="bg-[#edf7ff] px-[9px] py-[5px] rounded-md text-center">${words.synonyms[0]}</div>
-                    <div class="bg-[#edf7ff] px-[9px] py-[5px] rounded-md text-center">${words.synonyms[1]}</div>
-                    <div class="bg-[#edf7ff] px-[9px] py-[5px] rounded-md text-center">${words.synonyms[2]}</div>
-                </div>
-            </div>
-    
-    
-    `;
+    detailsBox.innerHTML = "";
     document.getElementById('my_modal_5').showModal();
 
-
+    words.forEach(word => {
+        const wordcard = document.createElement('div');
+        wordcard.innerHTML = `
+          
+          <h3 class="text-lg font-bold">Eager (:ইগার)</h3>
+                <p class="mt-[7px]">Meaning</p>
+                <p class="mb-[7px]">আগ্রহী</p>
+                <p class="mt-[7px]">Example</p>
+                <p class="mb-[7px]">The kids were eager to open their gifts.</p>
+                <p>সমার্থক শব্দ গুলো</p>
+                <div class="grid grid-cols-3 gap-[15px] justify-center items-center">
+                    <div class="bg-[#edf7ff] px-[9px] py-[5px] rounded-md text-center">Enthusiastic</div>
+                    <div class="bg-[#edf7ff] px-[9px] py-[5px] rounded-md text-center">excited</div>
+                    <div class="bg-[#edf7ff] px-[9px] py-[5px] rounded-md text-center">Enthusiastic</div>
+                </div>
+          
+          
+        `
+        detailsBox.appendChild(word)
+    });
 
 }
-
-
-// ** 
-// ** 
-
-const managespiner = (status) => {
-    if (status == true) {
-        document.getElementById('spinner').classList.remove("hidden");
-        document.getElementById('word-container').classList.add('hidden');
-    }
-    else {
-        document.getElementById('word-container').classList.remove("hidden");
-        document.getElementById('spinner').classList.add('hidden');
-    }
-}
-
-// ** 
-// ** 
-
-document.getElementById('btn-search').addEventListener('click', () => {
-    const input = document.getElementById('input-search');
-    const search = input.value.trim().toLowerCase();
-    console.log(search);
-    fetch("https://openapi.programming-hero.com/api/words/all")
-        .then(res => res.json())
-        .then((data) => {
-            const allWords = data.data;
-            console.log(allWords);
-            const filterWord = allWords.filter((word) => {
-                return word.word.toLowerCase().includes(search);
-            });
-
-            displaylevelword(filterWord);
-        })
-})
-
-
-// ** 
-

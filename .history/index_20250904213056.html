@@ -77,21 +77,6 @@
         </div>
     </section>
 
-    <section class="flex justify-center items-center my-[40px]">
-        <div class="join">
-            <div>
-                <label class="input validator join-item">
-                    <input id="input-search" type="text" placeholder="search" required />
-                </label>
-            </div>
-            <button id="btn-search" class="btn btn-primary join-item">Search</button>
-        </div>
-    </section>
-
-    <section id="spinner" class="flex justify-center items-center my-[30px] hidden">
-        <span class="loading loading-bars loading-md"></span>
-    </section>
-
     <section class="bg-[#f8f8f8] p-[40px] my-[50px] w-11/12 mx-auto rounded-lg">
         <div id="word-container" class="grid grid-cols-3 gap-[25px]">
             <div class="text-center col-span-full">
@@ -104,20 +89,18 @@
 
 
     <!-- Open the modal using ID.showModal() method -->
-    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
-    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-            <div id="details-containar">
-
-            </div>
-            <div class="modal-action">
-                <form method="dialog">
-                    if there is a button in form, it will close the modal
-                    <button class="btn">Close</button>
-                </form>
-            </div>
-        </div>
-    </dialog>
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
 
 

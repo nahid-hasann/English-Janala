@@ -173,7 +173,7 @@ document.getElementById('btn-search').addEventListener('click', () => {
                 return word.word.toLowerCase().includes(search);
             });
 
-            displaylevelword(filterWord);
+            
         })
 })
 

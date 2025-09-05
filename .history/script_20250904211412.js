@@ -29,24 +29,18 @@ const displaylessons = (lessons) => {
     });
 }
 // ** 
-// ** 
 
-
-
-
-// ** 
 // ** 
 
 const removeActive = () => {
-    const lessonButtons = document.querySelectorAll('.lesson-btn');
-    console.log(lessonButtons);
-    lessonButtons.forEach((btn) => {
-        btn.classList.remove('active')
-    })
+   const lessonButtons = document.querySelectorAll('.lesson-btn');
+   console.log(lessonButtons);
+   lessonButtons.forEach((btn) => {
+     btn.classList.remove('active')
+   })
 }
 
 const loadLevelword = (id) => {
-    managespiner(true);
     const url = `https://openapi.programming-hero.com/api/level/${id}`
     fetch(url)
         .then(res => res.json())
@@ -73,7 +67,6 @@ const displaylevelword = (words) => {
     </div>
     
     `
-        managespiner(false);
         return;
     }
 
@@ -86,7 +79,7 @@ const displaylevelword = (words) => {
             <p class="text-[20px] font-medium my-[14px]">Meaning /Pronounciation</p>
             <h1 class="text-[32px] font-semibold font-bangla">"${word.meaning ? word.meaning : "empty"} / ${word.pronunciation}"</h1>
             <div class="flex justify-between">
-                <div onclick="loadWordDetails(${word.id})" class="bg-[#e7f3fe] p-[10px] rounded-md flex justify-center items-center"><i class="fa-solid fa-circle-info text-[25px]"></i></div>
+                <div onclick="loadWordDetails(" class="bg-[#e7f3fe] p-[10px] rounded-md flex justify-center items-center"><i class="fa-solid fa-circle-info text-[25px]"></i></div>
                 <div class="bg-[#e7f3fe] p-[10px] rounded-md flex justify-center items-center"><i class="fa-solid fa-volume-low text-[25px]"></i></div>
             </div>
         </div>
@@ -96,87 +89,6 @@ const displaylevelword = (words) => {
 
         wordContainer.appendChild(card);
     })
-
-    managespiner(false);
 }
 
 // ** 
-
-// **
-
-const loadWordDetails = (id) => {
-    const url = `https://openapi.programming-hero.com/api/word/${id}`
-    fetch(url)
-        .then(res => res.json())
-        .then((data) => {
-            displayWordDetails(data.data)
-        })
-}
-
-const displayWordDetails = (words) => {
-
-    console.log(words)
-    const detailsBox = document.getElementById('details-containar');
-    detailsBox.innerHTML = `
-    
-    
-             <div>
-                     <h3 class="text-lg font-bold">${words.word}</h3>
-                <p class="mt-[7px]">meaning</p>
-                <p class="mb-[7px]">${words.pronunciation}</p>
-                <p class="mt-[7px]">Example</p>
-                <p class="mb-[7px]">${words.sentence}</p>
-                <p>সমার্থক শব্দ গুলো</p>
-                <div class="grid grid-cols-3 gap-[15px] justify-center items-center">
-                    <div class="bg-[#edf7ff] px-[9px] py-[5px] rounded-md text-center">${words.synonyms[0]}</div>
-                    <div class="bg-[#edf7ff] px-[9px] py-[5px] rounded-md text-center">${words.synonyms[1]}</div>
-                    <div class="bg-[#edf7ff] px-[9px] py-[5px] rounded-md text-center">${words.synonyms[2]}</div>
-                </div>
-            </div>
-    
-    
-    `;
-    document.getElementById('my_modal_5').showModal();
-
-
-
-}
-
-
-// ** 
-// ** 
-
-const managespiner = (status) => {
-    if (status == true) {
-        document.getElementById('spinner').classList.remove("hidden");
-        document.getElementById('word-container').classList.add('hidden');
-    }
-    else {
-        document.getElementById('word-container').classList.remove("hidden");
-        document.getElementById('spinner').classList.add('hidden');
-    }
-}
-
-// ** 
-// ** 
-
-document.getElementById('btn-search').addEventListener('click', () => {
-    const input = document.getElementById('input-search');
-    const search = input.value.trim().toLowerCase();
-    console.log(search);
-    fetch("https://openapi.programming-hero.com/api/words/all")
-        .then(res => res.json())
-        .then((data) => {
-            const allWords = data.data;
-            console.log(allWords);
-            const filterWord = allWords.filter((word) => {
-                return word.word.toLowerCase().includes(search);
-            });
-
-            displaylevelword(filterWord);
-        })
-})
-
-
-// ** 
-
